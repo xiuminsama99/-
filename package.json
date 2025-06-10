@@ -1,0 +1,56 @@
+{
+  "name": "random-fingerprint-browser",
+  "version": "1.0.0",
+  "description": "基于Chrome内核的随机指纹浏览器，每次关闭后清除所有数据并随机化指纹",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "clean": "rimraf dist build",
+    "test": "node test/fingerprint-test.js",
+    "install-deps": "node install.js",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "keywords": [
+    "browser",
+    "fingerprint",
+    "privacy",
+    "chrome",
+    "electron"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {
+    "user-agents": "^1.0.1274",
+    "fake-useragent": "^1.0.1"
+  },
+  "build": {
+    "appId": "com.randomfingerprintbrowser.app",
+    "productName": "随机指纹浏览器",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    }
+  }
+}
